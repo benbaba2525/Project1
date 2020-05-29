@@ -29,7 +29,7 @@ function handleGeneralError(error) {
     log('Error: ', error.message);
     alert(error.message || 'Internal Server');
 }
-
+///--------------------------------------------------------------
 function createIframe(video) {
     const videoKey = (video && video.key) || 'No key found!!!';
     const iframe = document.createElement('iframe');
@@ -49,41 +49,21 @@ function insertIframeIntoContent(video, content) {
 }
 
 
-//----------------------------------------------------
-
-/*
-function createReviewTemplate(data){
-    const content = this.content;
-    content.innerHTML = '<p id="content-close">X</p><div id=linkOut><a href = "https://www.themoviedb.org/movie/now-playing?language=en-US" style="font-size:30px;"><h3>Click to Find Out More Where to Watch </h3></a><div>';
-
-    
-    for(var i = 0; i<data.results.length; i++){
-        var movieDiv = $("<div class='movieReview'>");
-        var totalresults = data.results[i];
-        var totalAuthor = totalresults.author;
-        var totalUrl = totalresults.url;
-        var pOne = $("<p>").text("Author: " + totalAuthor);
-        var pThree = $("<a>").html("This url:<a href = '"+totalUrl+"'>Link</a>");
-    
-        movieDiv.append(pOne);
-        movieDiv.append(pThree);
-    
-    // Putting the entire movie above the previous movies
-    $(".content-display").append(movieDiv);
-
-};
-
-};
-*/
-//------------------------------------------------------
-
-
 function createVideoTemplate(data) {
     const content = this.content;
     content.innerHTML = '<p id="content-close">X</p><button type="button" id="reviewContent" class="btn btn-primary btn-lg"><a id="linkOut" href = "https://www.themoviedb.org/movie/now-playing?language=en-US" style="font-size:30px;"><h4>Click to Find Out More Where to Watch</h4></a></button>';
-   
-    const videos = data.results || [];
 
+    
+    
+    
+//---------------------------------------
+
+    
+
+
+
+//-----------------------------------------
+const videos = data.results || [];
     if (videos.length === 0) {
         content.innerHTML = `
             <p id="content-close">X</p>
@@ -97,7 +77,6 @@ function createVideoTemplate(data) {
         insertIframeIntoContent(video, content);
     }
 }
-
 
 function createSectionHeader(title) {
     const header = document.createElement('h2');
@@ -171,8 +150,6 @@ searchButton.onclick = function (event) {
     resetInput();
 }
 
-
-
 // Click on any movies
 // Event Delegation
 document.onclick = function (event) {
@@ -185,22 +162,15 @@ document.onclick = function (event) {
         const section = event.target.parentElement.parentElement;
         const content = section.nextElementSibling;
         content.classList.add('content-display');
-       
         getVideosByMovieId(movieId, content);
-   
+     
     }
-
 
     if (id === 'content-close') {
         const content = event.target.parentElement;
         content.classList.remove('content-display');
     }
 }
-
-
-
-
-
 
 // Initial Values
 const MOVIE_DB_API = 'a4b437085eed3fcd667466edf8751b37';
@@ -267,19 +237,13 @@ function getVideosByMovieId(movieId, content) {
     requestMovies(url, render, handleGeneralError);
 }
 
-function getReviewsByMovieId(movieId, content) {
-    const url = generateMovieDBUrl(`/movie/${movieId}/reviews`);
-    const render = createReviewTemplate.bind({ content });
-    requestMovies(url, render, handleGeneralError);
-}
+
 
 
 //  .on("click") function associated with the clear button
 $("#clear-all").on("click", function(){
     location.reload(true);
 });
-
-
 
 
 // Initialize the search
@@ -291,9 +255,3 @@ getTrendingMovies();
 getNowPlayingMovies();
 
 
-
-
-
-    
-
-    
