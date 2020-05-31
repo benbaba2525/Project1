@@ -31,7 +31,7 @@ In the application user can plan to date at home by click on dinner page to pick
 <ul>
   <li>Kanyarut Pornamnuay   <a target="_blank" rel="nofollow" href="https://github.com/benbaba2525">Visit My Github Profile</a></li>
   <li>Krista Clarke</li>
-  <li>
+  <li>Francis Duya</li>
 </ul>
 
 <h2 style ="border-bottom:1px;">Acknowledgments</h2>
